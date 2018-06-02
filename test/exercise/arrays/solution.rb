@@ -25,7 +25,39 @@ module Exercise
       end
 
       def search(_array, _query)
-        0
+        right = _array.length()-1
+        if right < 0
+          return -1
+        end
+        if right == 0
+          if _array[right] == _query
+            return right
+          else return -1
+          end
+        end
+
+        left=0
+
+        while right >= left
+
+          if right == left
+            if _array[right] == _query
+              return right
+            else return -1
+            end
+          end
+
+          center = (right+left).div 2
+
+          if _array[center] == _query
+            return center
+          elsif _array[center] > _query
+            right = center - 1
+          else
+            left = center +1
+          end
+
+        end
       end
     end
   end
