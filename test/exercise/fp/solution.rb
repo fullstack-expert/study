@@ -7,16 +7,15 @@ module Exercise
       def rating(_array)
         i = 0
         sumOfRating = _array.reduce(0) { |memo, film|
-          rating = film["rating_kinopoisk"]
+          rating = film["rating_kinopoisk"].to_f
           country = film["country"]
           numOfCountries = country.nil? ? 0 : country.split(',').length
 
-          if rating.nil? || rating.to_f == 0 || numOfCountries < 2
-            next memo
+          if rating > 0 && numOfCountries > 1
+            memo += rating
+            i += 1
           end
-
-          i += 1
-          memo += rating.to_f
+          memo
         }
         return sumOfRating / i
       end
