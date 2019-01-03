@@ -5,17 +5,17 @@ module Exercise
       # Использовать свои написанные функции для реализации следующих - можно.
 
       # Написать свою функцию my_each
-      def my_each(&fn)
+      def my_each(*)
         for i in self
-          fn.call(i)
+          yield(i) if block_given?
         end
       end
 
       # Написать свою функцию my_map
-      def my_map(&fn)
+      def my_map(*)
         result = []
         for i in self
-          result << fn.call(i)
+          result << yield(i) if block_given?
         end
         self.class.new(result)
       end
@@ -24,20 +24,20 @@ module Exercise
       def my_compact
         result = []
         for i in self
-          result << i if !i.nil?
+          result << i unless i.nil?
         end
         self.class.new(result)
       end
 
       # Написать свою функцию my_reduce
-      def my_reduce(init = nil, &fn)
+      def my_reduce(init = nil)
         return nil if self.empty?
         acc = init.nil? ? self.first : init
         tail = init.nil? ? self.drop(1) : self
         for i in tail
-          acc = fn.call(acc, i)
+          acc = yield(acc, i) if block_given?
         end
-        return acc
+        acc
       end
     end
   end
