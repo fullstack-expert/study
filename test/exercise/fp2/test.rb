@@ -11,7 +11,7 @@ class Exercise::Fp2Test < Minitest::Test
   end
 
   def test_my_each
-    skip
+#   skip
     result = []
     my_result = []
 
@@ -30,7 +30,7 @@ class Exercise::Fp2Test < Minitest::Test
   end
 
   def test_my_compact
-    skip
+#   skip
     func = -> (element) { element if element.even? }
     func_another = -> (element) { element * @int }
     func_yet_another = -> (element) { element.even? }
@@ -40,7 +40,7 @@ class Exercise::Fp2Test < Minitest::Test
   end
 
   def test_my_reduce
-    skip
+#   skip
     func = -> (acc, element) { acc * element }
 
     assert @array.reduce(&func) == @my_array.my_reduce(&func)
