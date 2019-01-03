@@ -21,15 +21,16 @@ module Exercise
       end
 
       def chars_count(_films, _threshold)
-        _films.reduce(0) { |memo, film|
+        countOfChars = 0
+        _films.map { |film|
           rating = film["rating_kinopoisk"].to_f
           if rating >= _threshold
-            memo = memo + film['name'].chars.reduce(0) { |count_chars, char|
-                count_chars = char == 'и' ? count_chars += 1 : count_chars
+            countOfChars += film['name'].chars.reduce(0) { |acc, char|
+                acc = char == 'и' ? acc += 1 : acc
             }
           end
-          memo
         }
+        return countOfChars
       end
     end
   end
