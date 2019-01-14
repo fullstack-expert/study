@@ -11,7 +11,22 @@ module Exercise
       end
 
       def search(array, query)
-        array.include?(query) ? array.index(query) : -1
+        low = 0
+        high = array.length - 1
+
+        while low <= high
+          mid = (low + high) / 2
+          guess = array[mid.to_i]
+
+          return mid if guess == query
+
+          if guess > query
+            high = mid - 1
+          else
+            low = mid +  1
+          end
+        end
+        -1
       end
     end
   end
