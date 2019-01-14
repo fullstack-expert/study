@@ -2,7 +2,9 @@ module Exercise
   module Arrays
     class << self
       def replace(array)
-        max = array.max
+        max = array.reduce do |acc, n|
+          acc > n ? acc : n
+        end
         array.map do |el|
           el > 0 ? max : el
         end
