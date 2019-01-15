@@ -9,8 +9,20 @@ module Exercise
         array
       end
 
-      def search(_array, _query)
-        0
+      def search(array, query)
+        bin_search array, query, 0, array.length - 1
+      end
+
+      def bin_search(array, query, left, right)
+        return -1 unless left <= right
+        i = (left + right) / 2
+        if array[i] == query
+          i
+        elsif array[i] < query
+          bin_search array, query, i + 1, right
+        elsif array[i] > query
+          bin_search array, query, left, i - 1
+        end
       end
     end
   end
