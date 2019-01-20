@@ -13,6 +13,10 @@ module Exercise
 
       # Написать свою функцию my_map
       def my_map
+        res = MyArray.new
+        for e in self
+          res.push yield(e)
+        end
       end
 
       # Написать свою функцию my_compact
