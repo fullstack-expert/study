@@ -30,7 +30,11 @@ module Exercise
       end
 
       # Написать свою функцию my_reduce
-      def my_reduce
+      def my_reduce(acc = nil)
+        for e in self
+          acc = acc ? yield(acc, e) : e
+        end
+        acc
       end
     end
   end
