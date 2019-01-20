@@ -17,10 +17,16 @@ module Exercise
         for e in self
           res.push yield(e)
         end
+        res
       end
 
       # Написать свою функцию my_compact
       def my_compact
+        res = MyArray.new
+        for e in self
+          res.push(e) unless e.nil?
+        end
+        res
       end
 
       # Написать свою функцию my_reduce
