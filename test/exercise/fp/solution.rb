@@ -14,8 +14,8 @@ module Exercise
         filtered.map { |e| e['rating_kinopoisk'].to_f }.reduce(:+) / filtered.length
       end
 
-      def chars_count(_films, _threshold)
-        0
+      def chars_count(films, threshold)
+        films.map { |e| e['rating_kinopoisk'].to_f >= threshold ? e['name'].count('и') : 0 }.reduce :+
       end
     end
   end
