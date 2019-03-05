@@ -26,9 +26,10 @@ module Exercise
        while left < right
          mid = left + ((right - left) / 2).ceil
        
-         if array[mid] == query
+          if array[mid] == query
               return mid
           end 
+          
          return -1 if right == 0 || left == array.length - 1
       
           if array[mid] > query
