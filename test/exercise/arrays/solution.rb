@@ -2,8 +2,18 @@ module Exercise
   module Arrays
     class << self
       def replace(array)
-        max_item = array.max
+        max_item = max_element(array)
         array.map { |item| item.positive? ? max_item : item }
+      end
+
+      def max_element(array)
+        max = array[0]
+
+        array.each do |i|
+          max = max < i ? i : max
+        end
+
+        max
       end
 
       def search(array, query)
