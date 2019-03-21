@@ -21,15 +21,10 @@ module Exercise
 
       # Написать свою функцию my_map
       def my_map
-        index = 0
-        length = self.length
         new_array = MyArray.new
 
-        loop do
-          break if index == length
-
-          new_array << yield(self[index])
-          index += 1
+        my_each do |i|
+          new_array << yield(i)
         end
 
         new_array
