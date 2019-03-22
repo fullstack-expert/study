@@ -1,12 +1,12 @@
 module Exercise
   module Arrays
     class << self
-      def replace(arr)
-        max_elem_of_arr = arr.max
+      def replace(array)
+        max_elem_of_array = array.max
         new_array = []
 
-        arr.each {|item|
-          (item > 0) ? new_array.push(max_elem_of_arr) : new_array.push(item)
+        array.each {|item|
+          (item > 0) ? new_array.push(max_elem_of_array) : new_array.push(item)
         }
 
         return new_array
