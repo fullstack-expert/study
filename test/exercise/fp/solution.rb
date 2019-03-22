@@ -13,7 +13,6 @@ module Exercise
               film["country"] != nil &&
               film["country"].split(',').length >= 2
           )
-
             new_array.push(film["rating_kinopoisk"].to_f)
 
           end
@@ -45,3 +44,20 @@ module Exercise
     end
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

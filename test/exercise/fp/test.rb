@@ -25,3 +25,19 @@ class Exercise::FpTest < Minitest::Test
     assert result == 40
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
