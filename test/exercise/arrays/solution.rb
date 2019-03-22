@@ -12,19 +12,19 @@ module Exercise
         return new_array
       end
 
-      def search(_array, _query)
+      def search(array, query)
 
         low = 0
-        high = _array.length - 1
+        high = array.length - 1
 
         while(low <= high)
 
           middle = (low+high) / 2
-          item = _array[middle]
+          item = array[middle]
 
-          if(item == _query)
+          if(item == query)
             return middle
-          elsif(item > _query)
+          elsif(item > query)
             high = middle - 1
           else
             low = middle + 1
