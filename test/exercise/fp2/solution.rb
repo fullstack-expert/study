@@ -32,24 +32,10 @@ module Exercise
 
       # Написать свою функцию my_compact
       def my_compact
-        index = 0
-        length = self.length
-        new_array = MyArray.new
-
-        loop do
-          break if index == length
-
-          if block_given?
-            block_result = yield(self[index])
-            new_array << block_result if block_result
-          else
-            self[index].nil? ? new_array : new_array << self[index]
-          end
-
-          index += 1
+        my_reduce(MyArray.new) do |acc, i|
+          acc << i unless i.nil?
+          acc
         end
-
-        new_array
       end
 
       # Написать свою функцию my_reduce
