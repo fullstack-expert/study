@@ -54,9 +54,14 @@ module Exercise
 
       # Написать свою функцию my_reduce
       def my_reduce(acc = nil)
-        index = 1
         length = self.length
-        acc ||= first
+
+        if acc
+          index = 0
+        else
+          index = 1
+          acc = first
+        end
 
         loop do
           break if index == length
