@@ -16,24 +16,25 @@ module Exercise
         max
       end
 
-      def search(array, query)
+      def search(array, query, initial_array = [])
+        initial_array = initial_array.empty? ? array : initial_array
+
         left = 0
         right = array.length - 1
 
-        while left <= right
-          mid = (left + right) / 2
-          guess = array[mid]
+        mid = (left + right) / 2
+        guess = array[mid]
 
-          return mid if guess == query
+        return initial_array.index(guess) if guess == query
+        return -1 if left >= right
 
-          if guess < query
-            left = mid + 1
-          else
-            right = mid - 1
-          end
+        if guess < query
+          left = mid + 1
+        else
+          right = mid - 1
         end
 
-        -1
+        search(array[left..right], query, initial_array)
       end
     end
   end
