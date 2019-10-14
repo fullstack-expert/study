@@ -10,8 +10,8 @@ module Exercise
         new_array
       end
 
-      def search(_array, _query)
-        arr_index = _array.index(_query)
+      def search(arr, query)
+        arr_index = arr.index(query)
         arr_index.nil? ? -1 : arr_index
       end
     end
