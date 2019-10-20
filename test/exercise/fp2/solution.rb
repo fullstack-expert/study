@@ -21,6 +21,9 @@ module Exercise
 
       # Написать свою функцию my_compact
       def my_compact
+        result = MyArray.new()
+        self.my_each{|val| result << val unless val.nil?}
+        result
       end
 
       # Написать свою функцию my_reduce
