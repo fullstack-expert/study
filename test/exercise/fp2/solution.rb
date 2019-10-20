@@ -14,7 +14,9 @@ module Exercise
 
       # Написать свою функцию my_map
       def my_map
-
+        result = MyArray.new()
+        self.my_each{|val| result << yield(val)}
+        result
       end
 
       # Написать свою функцию my_compact
