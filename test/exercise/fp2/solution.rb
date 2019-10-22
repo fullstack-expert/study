@@ -27,7 +27,17 @@ module Exercise
       end
 
       # Написать свою функцию my_reduce
-      def my_reduce
+      def my_reduce(acc = nil)
+        index_arr = 0
+        if acc.nil?
+          index_arr += 1
+          acc = self[0]
+        end
+        while index_arr < self.size do
+          acc = yield(acc, self[index_arr])
+          index_arr += 1
+        end
+        acc       
       end
     end
   end
