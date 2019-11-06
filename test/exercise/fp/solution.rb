@@ -6,14 +6,16 @@ module Exercise
       # film['genres'], film['year'], film['access_level'], film['country']
       def rating(array)
         filtered = array.select do |film|
-          !film['rating_kinopoisk'].nil? && film['rating_kinopoisk'].to_f.positive? && !film['country'].nil? && film['country'].split(',').length >= 2
+          film['rating_kinopoisk'].to_f.positive? && film['country'].to_s.split(',').length >= 2
         end
 
         filtered.map { |film| film['rating_kinopoisk'].to_f }.reduce(:+) / filtered.length
       end
 
-      def chars_count(_films, _threshold)
-        0
+      def chars_count(films, threshold)
+        films.reduce(0) do |accum, film|
+          accum + film['rating_kinopoisk'].to_f < threshold ? 0 : film['name'].length - film['name'].gsub(/и/, '').length
+        end
       end
     end
   end
