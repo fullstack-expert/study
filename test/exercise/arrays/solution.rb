@@ -2,7 +2,6 @@ module Exercise
   module Arrays
     class << self
       def replace(array)
-      
         i = 1
         max = array[0]
         while i < array.length
@@ -10,7 +9,7 @@ module Exercise
           i += 1
         end
         max_arr = max
-
+ 
         j = 0
         while j < array.length
           array[j] = if array[j] > 0
@@ -29,15 +28,15 @@ end
         while low <= high do 
           mid = (low + high) / 2 
           guess = array[mid]
-          if guess == num 
-            return mid 
-          elsif guess > num 
+        if guess == num 
+             mid 
+        elsif guess > num 
             high = mid - 1
-          else 
+        else 
             low = mid + 1 
-          end 
+        end 
         end
-      return -1 
+        -1 
       end
     end
   end
