@@ -5,7 +5,8 @@ module Exercise
       # film["name"], film["rating_kinopoisk"], film["rating_imdb"],
       # film["genres"], film["year"], film["access_level"], film["country"]
       def rating(_array)
-        0
+        new_array = array.map { |film["country"]| film["country"] > 1 ? film : nil }
+        array.reduce(0) { |sum, film["rating_kinopoisk"]| sum + film["rating_kinopoisk"] }
       end
 
       def chars_count(_films, _threshold)
