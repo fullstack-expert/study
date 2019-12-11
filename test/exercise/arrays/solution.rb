@@ -7,9 +7,7 @@ module Exercise
       end
 
       def find_max(array)
-        max = 0
-        array.each { |value| max = value if value > max }
-        max
+        array.reduce(0) { |max, num| if num > max then num else max end }
       end
 
       def search(array, query, first = 0, last = array.length - 1) # бинарный поиск в отсортированном массиве
