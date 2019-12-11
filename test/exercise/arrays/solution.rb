@@ -1,13 +1,14 @@
 module Exercise
   module Arrays
     class << self
+      require 'pry'
       def replace(array)
         max_elem = find_max(array)
         array.map { |elem| elem > 0 ? max_elem : elem }
       end
 
       def find_max(array)
-        array.reduce(0) { |max, num| if num > max then num else max end }
+        array.reduce(0) { |max, num| num > max ? num : max }
       end
 
       def search(array, query, first = 0, last = array.length - 1) # бинарный поиск в отсортированном массиве
