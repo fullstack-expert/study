@@ -10,7 +10,8 @@ module Exercise
       end
 
       def search(_array, _query)
-        0
+        result = _array.index(_query)
+        result == nil ? -1 : result
       end
     end
   end
