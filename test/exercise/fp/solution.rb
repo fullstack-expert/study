@@ -9,7 +9,21 @@ module Exercise
       end
 
       def chars_count(_films, _threshold)
-        0
+        filtered_films = _films
+          .select { |film|
+            rating = film["rating_kinopoisk"].to_f
+            if (rating >= _threshold)
+              film
+            end
+          }
+        
+        i_count = filtered_films.reduce(0) { |acc, film|
+          name = film["name"]
+          name.each_char do |char| char == 'и' ? acc += 1 : acc end
+          acc
+        }
+
+        i_count
       end
     end
   end
