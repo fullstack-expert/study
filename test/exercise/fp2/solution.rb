@@ -13,11 +13,16 @@ module Exercise
 
       # Написать свою функцию my_map
       def my_map
-        for item in self do yield(item) end
+        result = []
+        for item in self
+            result << yield(item)
+        end
+        MyArray.new(result)
       end
 
       # Написать свою функцию my_compact
       def my_compact
+
       end
 
       # Написать свою функцию my_reduce
