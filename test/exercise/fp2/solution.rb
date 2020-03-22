@@ -22,7 +22,11 @@ module Exercise
 
       # Написать свою функцию my_compact
       def my_compact
-
+        result = []
+        for item in self
+            result << item if !item.nil?
+        end
+        MyArray.new(result)
       end
 
       # Написать свою функцию my_reduce
