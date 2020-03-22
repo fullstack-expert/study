@@ -6,6 +6,9 @@ module Exercise
 
       # Написать свою функцию my_each
       def my_each
+        for item in self
+            yield(item)
+        end
       end
 
       # Написать свою функцию my_map
