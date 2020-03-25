@@ -28,6 +28,7 @@ class Exercise::Fp2Test < Minitest::Test
   end
 
   def test_my_compact
+
     func = -> (element) { element if element.even? }
     func_another = -> (element) { element * @int }
     func_yet_another = -> (element) { element.even? }
@@ -37,7 +38,6 @@ class Exercise::Fp2Test < Minitest::Test
   end
 
   def test_my_reduce
-    skip
     func = -> (acc, element) { acc * element }
 
     assert @array.reduce(&func) == @my_array.my_reduce(&func)

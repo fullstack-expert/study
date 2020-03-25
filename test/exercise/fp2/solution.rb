@@ -6,31 +6,32 @@ module Exercise
 
       # Написать свою функцию my_each
       def my_each
-        for item in self
-            yield(item)
-        end
+        for item in self do yield(item) end
       end
 
       # Написать свою функцию my_map
       def my_map
         result = []
-        for item in self
-            result << yield(item)
-        end
-        MyArray.new(result)
+
+        func = -> (item) { result << yield(item) }
+        self.my_each(&func)
+
+        self.class.new(result)
       end
 
       # Написать свою функцию my_compact
       def my_compact
         result = []
-        for item in self
-            result << item if !item.nil?
-        end
-        MyArray.new(result)
+
+        func = -> (item) { result << item if !item.nil? }
+        self.my_each(&func)
+
+        self.class.new(result)
       end
 
       # Написать свою функцию my_reduce
       def my_reduce
+
       end
     end
   end
