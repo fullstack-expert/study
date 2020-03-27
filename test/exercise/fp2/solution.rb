@@ -30,8 +30,18 @@ module Exercise
       end
 
       # Написать свою функцию my_reduce
-      def my_reduce
+      def my_reduce(accumulator = nil, &block)
+        if (accumulator.nil?)
+            accumulator = self.first
+            list = self[1..-1]
+        else
+            list = self
+        end
 
+        list.my_each do |element|
+          accumulator = block.call(accumulator, element) if !element.nil?
+        end
+        accumulator
       end
     end
   end
