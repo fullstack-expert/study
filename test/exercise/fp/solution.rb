@@ -8,7 +8,7 @@ module Exercise
         filtered_films = _array
           .select { |film|
             countries = film["country"]
-            !countries.nil? && countries.split(' ').size >= 2
+            !countries.nil? && countries.split(',').size >= 2
           }.select { |film|
             rating = film["rating_kinopoisk"].to_f
             !rating.nil? && rating > 0.0
@@ -31,7 +31,7 @@ module Exercise
         
         i_count = filtered_films.reduce(0) { |acc, film|
           name = film["name"]
-          name.each_char do |char| char == 'и' ? acc += 1 : acc end
+          name.each_char do |char| acc += 1 if char == 'и' end
           acc
         }
 
