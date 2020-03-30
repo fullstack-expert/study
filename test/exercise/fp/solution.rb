@@ -24,9 +24,7 @@ module Exercise
         filtered_films = _films
           .select { |film|
             rating = film["rating_kinopoisk"].to_f
-            if (rating >= _threshold)
-              film
-            end
+            film if (rating >= _threshold)
           }
         
         i_count = filtered_films.reduce(0) { |acc, film|
