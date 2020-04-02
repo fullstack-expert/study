@@ -7,7 +7,11 @@ module Inatra
         def method_missing(method, url)
             method_name = method.to_s.upcase
             @route = {}
-            @route[method_name] = { url => yield }
+            if @route.key?(method_name)
+                @route[method_name][url] = yield
+            else
+                @route[method_name] = { url => yield }
+            end
         end
 
         def call(env)
