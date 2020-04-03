@@ -17,7 +17,7 @@ module Exercise
         ratings = filtered_films.map { |film| film["rating_kinopoisk"].to_f }
         sum_rating = ratings.reduce(0.0) { |sum, rating| sum += rating }
 
-        sum_rating / filtered_films.size
+        return (sum_rating / filtered_films.size)
       end
 
       def chars_count(_films, _threshold)
@@ -35,7 +35,7 @@ module Exercise
           acc
         }
 
-        i_count
+        return i_count
       end
     end
   end
