@@ -11,27 +11,27 @@ module Exercise
 
       # Написать свою функцию my_map
       def my_map
-        result = []
+        result = self.class.new
 
         func = -> (item) { result << yield(item) }
         self.my_each(&func)
 
-        self.class.new(result)
+        return result
       end
 
       # Написать свою функцию my_compact
       def my_compact
-        result = []
+        result = self.class.new
 
         func = -> (item) { result << item if !item.nil? }
         self.my_each(&func)
 
-        self.class.new(result)
+        return result
       end
 
       # Написать свою функцию my_reduce
       def my_reduce(accumulator = nil, &block)
-        if (accumulator.nil?)
+        if accumulator.nil?
             accumulator = self.first
             list = self[1..-1]
         else
@@ -39,9 +39,10 @@ module Exercise
         end
 
         list.my_each do |element|
-          accumulator = block.call(accumulator, element) if !element.nil?
+          accumulator = block.call(accumulator, element) unless element.nil?
         end
-        accumulator
+
+        return accumulator
       end
     end
   end
