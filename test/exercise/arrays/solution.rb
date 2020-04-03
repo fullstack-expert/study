@@ -11,7 +11,7 @@ module Exercise
 
       def search(_array, _query)
         result = _array.index(_query)
-        result == nil ? -1 : result
+        result.nil? ? -1 : result
       end
     end
   end
