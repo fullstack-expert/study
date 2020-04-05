@@ -32,13 +32,12 @@ module Exercise
       # Написать свою функцию my_reduce
       def my_reduce(accumulator = nil, &block)
         if accumulator.nil?
-            accumulator = self.first
-            list = self[1..-1]
+          accumulator, *list = self
         else
-            list = self
+          list = self
         end
 
-        list.my_each do |element|
+        self.class.new(list).my_each do |element|
           accumulator = block.call(accumulator, element) unless element.nil?
         end
 
