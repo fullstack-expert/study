@@ -8,4 +8,4 @@
 /spec/reports/
 /tmp/
 /log/
-/byebug_history/
+.byebug_history
