@@ -15,5 +15,14 @@ module Inatra
     def tasks
       [201, {}, 'Task created']
     end
+
+    def method_missing(m, *args, &block)
+      p "Delegating #{m}"
+      # object.send(m, *args, &block)
+    def call(_env)
+      headers = {}
+
+      [200, headers, 'Hello World']
+    end
   end
 end
