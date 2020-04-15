@@ -12,20 +12,15 @@ module Exercise
 
         filtered_ratings = array_films.reduce([]) do |acc, film|
           rating = film[rating_key].to_f
-          countries = film[country_key]
-          if !rating || rating == 0
-            acc
-          elsif !countries || countries.split(',').length < 2
-            acc
-          else
-            [*acc, rating]
-          end
+          countries = film[country_key].to_s
+          fit_film = rating > 0 && countries.split(',').length >= 2
+          fit_film ? [*acc, rating] : acc
         end
-        films_count = filtered_ratings.length
+
         rating_sum = filtered_ratings.reduce(0) do |acc, rating|
           acc + rating
         end
-        rating_sum / films_count
+        rating_sum / filtered_ratings.length
       end
 
       def chars_count(films, threshold)
@@ -37,11 +32,8 @@ module Exercise
         filtered_film_names = array_films.reduce([]) do |acc, film|
           name = film[name_key]
           rating = film[rating_key].to_f
-          if !rating || rating <= threshold
-            acc
-          else
-            [*acc, name]
-          end
+          fit_film = rating > threshold
+          fit_film ? [*acc, name] : acc
         end
 
         filtered_film_names.reduce(0) do |acc, name|
