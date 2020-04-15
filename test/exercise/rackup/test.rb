@@ -13,4 +13,11 @@ class RackTest < Test::Unit::TestCase
     assert_equal 'Hello World', browser.last_response.body
     # end
   end
+
+  def test_task_created
+    browser = Rack::Test::Session.new(Rack::MockSession.new(Inatra))
+    browser.post '/tasks'
+    assert browser.last_response.status == 201
+    assert_equal 'Task created', browser.last_response.body
+  end
 end
