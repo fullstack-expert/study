@@ -4,8 +4,7 @@ module Exercise
       def replace(array)
         max_element = array.max
         array.map do |element|
-          new_element = element > 0 ? max_element : element
-          new_element
+          element > 0 ? max_element : element
         end
       end
 
