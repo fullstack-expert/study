@@ -11,14 +11,12 @@ module Exercise
                   .map { |film| film['rating_kinopoisk'].to_f }
                   .reject { |rating| rating == 0.0 }
 
-        result = ratings.reduce(:+) / ratings.size
-        result
+        ratings.reduce(:+) / ratings.size
       end
 
       def chars_count(films, threshold)
         target_films = films.select { |film| film['rating_kinopoisk'].to_f >= threshold }
-        result = target_films.reduce(0) { |a, e| a + e['name'].count('и') }
-        result
+        target_films.reduce(0) { |a, e| a + e['name'].count('и') }
       end
     end
   end
