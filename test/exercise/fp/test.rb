@@ -11,6 +11,7 @@ class Exercise::FpTest < Minitest::Test
     array = CSV.readlines('./test/fixtures/films.csv', headers: true)
 
     result = Exercise::Fp.rating(array)
+    p result
     assert result == 6.809410385259628
   end
 
