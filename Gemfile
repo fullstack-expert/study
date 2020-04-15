@@ -9,3 +9,4 @@ gem 'rubocop', require: false
 gem 'rack'
 gem 'test-unit'
 gem 'rack-test'
+gem 'byebug'
