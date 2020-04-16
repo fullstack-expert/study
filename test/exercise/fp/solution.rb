@@ -22,7 +22,8 @@ module Exercise
           .by_row
           .select { |film| film['rating_kinopoisk'].to_f > threshold }
           .map { |film| film['name'] }
-          .reduce(0) { |a, e| a + e.count('и') }
+          .map { |name| name.count('и') }
+          .sum
       end
     end
   end
