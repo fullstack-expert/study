@@ -16,7 +16,14 @@ module Exercise
       end
 
       # Написать свою функцию my_map
-      def my_map
+      def my_map(&block)
+        new_array = MyArray.new
+
+        self.my_each do |element|
+          new_array << block.call(element)
+        end
+
+        new_array
       end
 
       # Написать свою функцию my_compact
