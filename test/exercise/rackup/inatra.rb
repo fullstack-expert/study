@@ -23,16 +23,18 @@ module Inatra
       headers = {}
       mapping = {
         'GET' => {
-          '/hello' => hello
+          '/hello' => ->() { hello }
         },
         'POST' => {
-          '/tasks' => tasks
+          '/tasks' => ->() { tasks }
         }
       }
+    end
 
+    def call(env)
       request_method = env['REQUEST_METHOD']
       path = env['PATH_INFO']
-      mapping[request_method][path]
+      routes[request_method][path].call
     end
 
     def hello
