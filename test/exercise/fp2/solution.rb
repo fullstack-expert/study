@@ -5,7 +5,14 @@ module Exercise
       # Использовать свои написанные функции для реализации следующих - можно.
 
       # Написать свою функцию my_each
-      def my_each
+      def my_each(&block)
+        i = 0
+        while i < self.size
+          block.call(self[i])
+          i += 1
+        end
+
+        self
       end
 
       # Написать свою функцию my_map
