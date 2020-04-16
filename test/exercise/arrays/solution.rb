@@ -2,15 +2,18 @@ module Exercise
   module Arrays
     class << self
       def replace(array)
-        max_element = array.max
+        biggest_element = max_element(array)
         array.map do |element|
-          element > 0 ? max_element : element
+          element > 0 ? biggest_element : element
         end
       end
 
       def search(array, query)
         return -1 if array.empty?
-        return array[0] == query ? 0 : -1 if array.length == 1
+
+        if array.length == 1
+          return array[0] == query ? 0 : -1
+        end
 
         middle = array.length / 2
         start_index = 0
@@ -27,6 +30,18 @@ module Exercise
           end
         end
         -1
+      end
+
+      def max_element(array)
+        max = array.first
+
+        i = 1
+        while i < array.size
+          max = array[i] if max < array[i]
+          i += 1
+        end
+
+        max
       end
     end
   end
