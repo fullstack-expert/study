@@ -38,7 +38,19 @@ module Exercise
       end
 
       # Написать свою функцию my_reduce
-      def my_reduce
+      def my_reduce(acc = nil, &block)
+        i = 0
+        if acc.nil?
+          i = 1
+          acc = self.first
+        end
+
+        while i < self.size
+          acc = block.call(acc, self[i])
+          i += 1
+        end
+
+        acc
       end
     end
   end
