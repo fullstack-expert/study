@@ -5,10 +5,10 @@ module Exercise
       # Использовать свои написанные функции для реализации следующих - можно.
 
       # Написать свою функцию my_each
-      def my_each(&block)
+      def my_each
         i = 0
-        while i < self.size
-          block.call(self[i])
+        while i < size
+          yield(self[i])
           i += 1
         end
 
@@ -16,11 +16,11 @@ module Exercise
       end
 
       # Написать свою функцию my_map
-      def my_map(&block)
+      def my_map
         new_array = MyArray.new
 
-        self.my_each do |element|
-          new_array << block.call(element)
+        my_each do |element|
+          new_array << yield(element)
         end
 
         new_array
@@ -30,7 +30,7 @@ module Exercise
       def my_compact
         new_array = MyArray.new
 
-        self.my_each do |element|
+        my_each do |element|
           new_array << element unless element.nil?
         end
 
@@ -38,15 +38,15 @@ module Exercise
       end
 
       # Написать свою функцию my_reduce
-      def my_reduce(acc = nil, &block)
+      def my_reduce(acc = nil)
         i = 0
         if acc.nil?
           i = 1
-          acc = self.first
+          acc = first
         end
 
-        while i < self.size
-          acc = block.call(acc, self[i])
+        while i < size
+          acc = yield(acc, self[i])
           i += 1
         end
 
