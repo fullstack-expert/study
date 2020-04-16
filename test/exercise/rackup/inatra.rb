@@ -1,21 +1,20 @@
 module Inatra
   class << self
     def routes
+      {
+        'GET' => {
+          '/hello' => ->() { hello }
+        },
+        'POST' => {
+          '/tasks' => ->() { tasks }
+        }
+      }
     end
 
     def call(env)
-      mapping = {
-        'GET' => {
-          '/hello' => hello
-        },
-        'POST' => {
-          '/tasks' => tasks
-        }
-      }
-
       request_method = env['REQUEST_METHOD']
       path = env['PATH_INFO']
-      mapping[request_method][path]
+      routes[request_method][path].call
     end
 
     def hello
