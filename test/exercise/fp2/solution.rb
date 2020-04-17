@@ -6,11 +6,7 @@ module Exercise
 
       # Написать свою функцию my_each
       def my_each
-        i = 0
-        while i < size
-          yield(self[i])
-          i += 1
-        end
+        iterate(0) { |element| yield(element) }
 
         self
       end
@@ -39,18 +35,23 @@ module Exercise
 
       # Написать свою функцию my_reduce
       def my_reduce(acc = nil)
-        i = 0
+        start_index = 0
         if acc.nil?
-          i = 1
+          start_index = 1
           acc = first
         end
 
-        while i < size
-          acc = yield(acc, self[i])
-          i += 1
-        end
+        iterate(start_index) { |element| acc = yield(acc, element) }
 
         acc
+      end
+
+      def iterate(i, &block)
+        return if i == size
+
+        yield(self[i])
+
+        iterate(i + 1, &block)
       end
     end
   end
