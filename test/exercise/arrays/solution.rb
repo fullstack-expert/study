@@ -11,21 +11,21 @@ module Exercise
       def search(array, query)
         return -1 if array.empty?
 
-        binary_search = lambda do |start_index, end_index|
-          if start_index == end_index
-            return start_index if array[start_index] == query
-            return -1
-          end
+        binary_search(array, query, 0, array.length - 1)
+      end
 
-          middle = (start_index + end_index) / 2
-          return middle if array[middle] == query
-
-          return binary_search.call(middle + 1, end_index) if array[middle] < query
-
-          binary_search.call(start_index, middle - 1)
+      def binary_search(array, query, start_index, end_index)
+        if start_index == end_index
+          return start_index if array[start_index] == query
+          return -1
         end
 
-        binary_search.call(0, array.length - 1)
+        middle = (start_index + end_index) / 2
+        return middle if array[middle] == query
+
+        return binary_search(array, query, middle + 1, end_index) if array[middle] < query
+
+        binary_search(array, query, start_index, middle - 1)
       end
 
       def max_element(array)
