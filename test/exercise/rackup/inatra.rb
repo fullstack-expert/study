@@ -14,7 +14,7 @@ module Inatra
     def call(env)
       request_method = env['REQUEST_METHOD']
       path = env['PATH_INFO']
-      routes[request_method][path].call
+      # routes[request_method][path].call
     end
 
     def hello
@@ -23,6 +23,11 @@ module Inatra
 
     def tasks
       [201, {}, 'Task created']
+    end
+
+    def method_missing(m, *args, &block)
+      p "Delegating #{m}"
+      # object.send(m, *args, &block)
     end
   end
 end
