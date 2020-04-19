@@ -6,4 +6,8 @@ Inatra.routes do
   post '/tasks' do
     [201, {}, ['Task created']]
   end
+
+  get '/tasks' do
+    [200, {}, ['Task list']]
+  end
 end
