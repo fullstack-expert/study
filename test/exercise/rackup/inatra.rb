@@ -6,7 +6,7 @@ module Inatra
     def call(env)
       path = env['PATH_INFO']
       method = env['REQUEST_METHOD']
-      instance_eval "#{method.downcase}_#{path.slice(1, path.length)}"
+      instance_eval "#{method.downcase}#{path.split('/').join('_')}"
     end
 
     def get_hello
