@@ -5,11 +5,11 @@ module Exercise
       # film["name"], film["rating_kinopoisk"], film["rating_imdb"],
       # film["genres"], film["year"], film["access_level"], film["country"]
       def rating(_array)
-        new_table = _array.select { |row| 
+        newtable = _array.select { |row| 
                               row["rating_kinopoisk"].to_f > 0 &&  
                               row["country"] != nil &&
                               row["country"].split(',').length > 1 } 
-        result = new_table.reduce(0) { |sum, row| sum + row["rating_kinopoisk"].to_f} / new_table.count           
+        newtable.reduce(0) { |sum, row| sum + row["rating_kinopoisk"].to_f} / new_table.count           
       end
 
       def chars_count(_films, _threshold)
