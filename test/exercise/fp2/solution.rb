@@ -25,8 +25,17 @@ module Exercise
       end
 
       # Написать свою функцию my_reduce
-      def my_reduce(res = nil)
-        my_each { |el| res.nil? ? res = el : res = yield(res, el) }
+      def my_reduce (res = nil)
+        if res == nil
+          res = self[0]
+          n = 1
+        else
+          n = 0
+        end
+        while n < self.length do 
+          res = yield(res, self[n])
+          n += 1
+        end
         res
       end
     end
