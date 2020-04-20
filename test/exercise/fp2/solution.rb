@@ -6,18 +6,28 @@ module Exercise
 
       # Написать свою функцию my_each
       def my_each
+        for item in self do
+          yield item 
+        end
       end
 
       # Написать свою функцию my_map
       def my_map
+        array = MyArray.new
+        my_each {|el| array << yield(el)}
       end
 
       # Написать свою функцию my_compact
       def my_compact
+        array = MyArray.new
+        my_each {|el| array << el if el != nil} 
+        array
       end
 
       # Написать свою функцию my_reduce
-      def my_reduce
+      def my_reduce(res = nil)
+        my_each { |el| res.nil? ? res = el : res = yield(res, el) }
+        res
       end
     end
   end
