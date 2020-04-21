@@ -1,9 +1,9 @@
-require 'byebug'
-
 module Inatra
+  @@handlers = {}
+
   class << self
     def routes(&block)
-      instance_eval &block
+      instance_eval(&block)
     end
 
     def call(env)
@@ -12,14 +12,14 @@ module Inatra
 
     private
 
-    def method_missing(name, path, &block)
-      define_method "#{name}_#{path}" do
-        instance_eval &block
-      end
+    def get(path, &block)
+      @@handlers['get'] ||= {}
+      @@handlers['get'][path] = -> { block.call }
     end
 
     def handle_request(method, path)
-      send("#{method}_#{path}")
+      handler = @@handlers.dig(method.downcase, path)
+      handler.call if handler
     end
   end
 end
