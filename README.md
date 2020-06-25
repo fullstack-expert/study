@@ -5,18 +5,27 @@
 ```
 docker-compose build
 docker-compose run --rm ruby bash -c 'bundle install'
+
+или
+make run
 ```
 
 ## Запуск тестов
 
 ```
 docker-compose run --rm ruby bash -c 'bundle exec rake test'
+
+или
+make dctest
 ```
 
 ## Запуск линтера
 
 ```
 docker-compose run --rm ruby bash -c 'bundle exec rubocop'
+
+или
+make lint
 ```
 
 ## Задача
