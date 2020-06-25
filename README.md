@@ -5,18 +5,52 @@
 ```
 docker-compose build
 docker-compose run --rm ruby bash -c 'bundle install'
+
+или
+make run
 ```
 
 ## Запуск тестов
 
 ```
 docker-compose run --rm ruby bash -c 'bundle exec rake test'
+
+или
+make outtest
 ```
 
 ## Запуск линтера
 
 ```
 docker-compose run --rm ruby bash -c 'bundle exec rubocop'
+
+или
+make outlint
+```
+## Для запуска терминала внутри контейнера наберите команду:
+
+```bash
+make shell
+```
+
+## Далее для работы внутри контейнера вы можете набирать следующие команды:
+
+### Запуск тестов
+
+```
+make intest
+```
+
+### Запуск линтера
+
+```
+make inlint
+```
+
+## Для выхода из контейнера наберите
+
+```
+exit
 ```
 
 ## Задача
