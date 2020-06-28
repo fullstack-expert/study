@@ -24,14 +24,22 @@ module Exercise
 
       def find_index(arr, query)
         index = 0
-        arr.each do |el|
+        arr.each do
           return index if arr[index] === query
           index += 1
         end
+        return nil
+      end
+
+      def include?(arr, query)
+        arr.each do |el|
+          return true if el === query
+        end
+        return false
       end
 
       def search(_array, _query)
-        return -1 if !_array.include?(_query)
+        return -1 if !include?(_array, _query)
         iter = proc {
           |arr|
           half = arr.length / 2
