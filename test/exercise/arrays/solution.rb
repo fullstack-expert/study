@@ -22,6 +22,14 @@ module Exercise
         replaced
       end
 
+      def find_index(arr, query)
+        index = 0
+        arr.each do |el|
+          return index if arr[index] === query
+          index += 1
+        end
+      end
+
       def search(_array, _query)
         return -1 if !_array.include?(_query)
         iter = proc {
@@ -29,7 +37,7 @@ module Exercise
           half = arr.length / 2
           middleIndex = half.integer? ? half : half.round()
           middle = arr[middleIndex]
-          return _array.find_index(middle) if  middle === _query
+          return find_index(_array, middle) if  middle === _query
           newArr = middle > _query ? arr[0, middleIndex] : arr[middleIndex + 1, arr.length - 1]
           return iter.call(newArr)
         }
