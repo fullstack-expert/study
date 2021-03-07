@@ -13,7 +13,17 @@ module Exercise
       def search(array, query)
         return -1 unless array.include? query
 
-        array.index(query)
+        left = -1
+        right = array.length
+        while left < right - 1
+          middle = (left + right) / 2
+          if array[middle] < query
+            left = middle
+          else
+            right = middle
+          end
+        end
+        right
       end
     end
   end
