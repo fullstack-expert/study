@@ -16,8 +16,10 @@ module Exercise
 
       # Посчитать количесвто букв 'и' в названиях всех фильмов
       # с рейтингом кинопоиска больше или равным заданному значению
-      def chars_count(_films, _threshold)
-        0
+      def chars_count(films, threshold)
+        filtred = films.select { |film| film['rating_kinopoisk'].to_f >= threshold }
+        maped = filtred.map { |film| film['name'].to_s }
+        maped.reduce(0) { |acc, name| acc + name.count('и') }
       end
     end
   end
