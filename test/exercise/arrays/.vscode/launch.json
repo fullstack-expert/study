@@ -1,0 +1,21 @@
+{
+  // Используйте IntelliSense, чтобы узнать о возможных атрибутах.
+  // Наведите указатель мыши, чтобы просмотреть описания существующих атрибутов.
+  // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+  {
+    "name": "Debug Local File2",
+    "type": "Ruby",
+    "request": "launch",
+    "program": "${workspaceRoot}/solution.rb"
+  },
+    {
+      "name": "Debug Local File",
+      "type": "Ruby",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "program": "solution.rb"
+    }
+  ]
+}
