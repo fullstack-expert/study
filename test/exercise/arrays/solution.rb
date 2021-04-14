@@ -1,16 +1,20 @@
 module Exercise
   module Arrays
     class << self
-      def replace(array)
+      def find_max(array)
         max_val = lambda { |arr, new_m|
           arr.each { |element| new_m = element if element > new_m }
           new_m
         }
-        if array.length.positive?
-          new_max = array[0]
-          new_max = max_val.call(array, new_max)
-          array.map { |val| val.positive? ? new_max : val }
-        end
+        new_max = array[0]
+        max_val.call(array, new_max)
+      end
+
+      def replace(array)
+        return unless array.length.positive?
+
+        new_max = find_max(array)
+        array.map { |val| val.positive? ? new_max : val }
       end
 
       def search(array, query)
