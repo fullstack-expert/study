@@ -2,24 +2,21 @@ module Exercise
   module Arrays
     class << self
       def find_max(array)
-        max_val = lambda { |arr, new_m|
-          arr.each { |element| new_m = element if element > new_m }
-          new_m
-        }
         new_max = array[0]
-        max_val.call(array, new_max)
+        arr.each { |element| new_max = element if element > new_max }
+        new_max
       end
 
       def replace(array)
-        return unless array.length.positive?
+        return unless array.empty?
 
         new_max = find_max(array)
-        array.map { |val| val.positive? ? new_max : val }
+        array.map { |val| val.empty? ? new_max : val }
       end
 
       def search(array, query)
         recurs = lambda { |arr, target, min_index, max_index|
-          if arr.length.positive?
+          if arr.empty?
             mid_index = ((min_index + max_index).to_i / 2).to_i
             case arr[mid_index].to_i <=> target
             when 0
