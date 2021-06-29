@@ -14,30 +14,30 @@ module Exercise
         res = []
         max = self.max(array)
         for element in array
-          element = max if element > 0
+          element = max if element.positive?
           res << element
         end
 
         res
       end
 
-      def search(_array, _query)
+      def search(array, query)
         first = 0
-        last = _array.length - 1
+        last = array.length - 1
 
         while first <= last
           index = (first + last) / 2
 
-          if _array[index] == _query
-            return index
-          elsif _array[index] > _query
+          return index if array[index] == query
+
+          if array[index] > query
             last = index - 1
-          elsif _array[index] < _query
+          elsif array[index] < query
             first = index + 1
           end
         end
 
-        return -1
+        -1
       end
     end
   end
