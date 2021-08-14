@@ -6,7 +6,6 @@ module Exercise
 
       # Написать свою функцию my_each
       def my_each
-
         for el in self do
           yield el
         end
@@ -44,7 +43,7 @@ module Exercise
       def my_reduce(initial = nil)
         acc = initial.nil? ?  self[0] : initial
 
-        items = initial.nil? ? self[1..] : self
+        items = initial.nil? ? slice(1, size - 1) : self
 
         for el in items do
           acc = yield acc, el
