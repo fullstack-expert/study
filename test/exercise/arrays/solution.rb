@@ -7,23 +7,20 @@ module Exercise
         array.map { |element| element.positive? ? max : element }
       end
 
-      def search(array, query)
-        start = 0
-        endpoint = array.size - 1
+      def search(array, query, first = 0, last = nil)
+        last ||= array.size - 1
+        middle = (first + last) / 2
 
-        return -1 if array.empty?
+        return -1 if first > last
 
-        while start <= endpoint
-          middle = (start + endpoint) / 2
-          return middle if array[middle] == query
+        return middle if array[middle] == query
 
-          if array[middle] < query
-            start = middle + 1
-          else
-            endpoint = middle - 1
-          end
+        if array[middle] < query
+          first = middle + 1
+        else
+          last = middle - 1
         end
-        -1
+        search(array, query, first, last)
       end
     end
   end
