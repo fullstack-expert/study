@@ -18,7 +18,6 @@ module Exercise
             recursive_search.call(sorted_array, key, low, mid - 1)
           else
             recursive_search.call(sorted_array, key, mid + 1, high)
-
           end
         end
         recursive_search.call(array, query, 0, array.length - 1)
