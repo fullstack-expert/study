@@ -16,8 +16,8 @@ module Exercise
         return -1 if array.empty?
 
         array_begin = array_border_begin || 0
-        array_mid = (array_begin + array_end) / 2
         array_end = array_border_end || array.length - 1
+        array_mid = (array_begin + array_end) / 2
         if value > array[array_end] || value < array[array_begin]
           -1
         elsif array[array_mid] == value
