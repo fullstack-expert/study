@@ -2,14 +2,10 @@ module Exercise
   module Arrays
     class << self
       def replace(array)
-        max_func = lambda do |collection, max|
-          return max if collection.empty?
-
-          first, *rest = collection
-          max = first if first > max
-          max_func.call(rest, max)
+        max = array[0]
+        for x in array do
+          max = x if x > max
         end
-        max = max_func.call(array, array.first)
         array.map { |el| el.positive? ? max : el }
       end
 
